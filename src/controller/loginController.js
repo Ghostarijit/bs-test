@@ -22,7 +22,7 @@ const loginUser = async function (req, res) {
 
 
         // Find userName and Password present in DV or not
-        let user = await userModel.findOne({ email: userName });
+        let user = await userModel.findOne({ email: userName,isDeleted:false });
         if (!user)
             return res.status(404).send({ status: false, msg: "Please enter a valid email address and password" });
          
@@ -41,14 +41,14 @@ const loginUser = async function (req, res) {
                 // Set This token In response in Header and Also In body
                 res.setHeader("Authorization", token);
                 let Id = user._id
-
+console.log(token)
                 const userData = {
                     userId: Id,
                     token: token
                 }
                 return res.status(200).send({ status: true, msg: "User Login SuccessFull", data: userData });
             }
-            else  return res.status(201).send({ status: true, message: "Please provide correct password" })
+            else  return res.status(201).send({ status: true, msg: "Please provide correct password" })
         })
 
        
