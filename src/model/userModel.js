@@ -10,14 +10,14 @@ const userSchema = new mongoose.Schema({
     email: {
         
         type: String
-        
     },
     password: {
-      
-        type: String
+      type: String
     },
     profileImage: {
-        type: String
+        type: String,
+       
+        default:""
         
     },
     isDeleted:{

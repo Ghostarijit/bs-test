@@ -180,9 +180,67 @@ const updateuser = async function (req, res) {
 
 
 
+const updateProfilePic = async function (req, res) {
+
+    try {
+     
+
+        
+
+
+
+
+    
+
+        let files = req.files
+
+        console.log(files)
+        if (files) {
+
+
+
+
+
+            // let files = req.files
+            // console.log(files)
+            if (files && files.length > 0) {
+                //upload to s3 and get the uploaded link
+                // res.send the link back to frontend/postman
+                let uploadedFileURL = await uploadFile(files[0])
+                
+                console.log(uploadedFileURL)
+                // return res.status(201).send({ status: true, data: user })
+
+                const update = await userModel.findOneAndUpdate({ _id: req.userId?.trim() }, {
+
+                    $set: { profileImage: uploadedFileURL }
+
+                }, { new: true })
+                return res.status(200).send({ status: true, msg: "ProfilePhoto Upload Successfully", data: update });
+            }
+
+        }
+
+        
+       
+
+        
+    } catch (err) {
+        // console.log(err.message)
+        return res.status(500).send({ status: "error", error: err.message })
+    }
+
+
+}
+
+
+
+
 
 
 
 
 module.exports.updateuser = updateuser
+
+module.exports.updateProfilePic= updateProfilePic
 

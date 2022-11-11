@@ -20,9 +20,13 @@ router.post("/login", loginController.loginUser)// 2
 
 router.put("/user/update/profile", middleWare.validateToken, put.updateuser)// 3
 
-router.get("/user/profile", get.getUserById)// 4
+router.put("/user/uplordProfilePicture", middleWare.validateToken, put.updateProfilePic)// 4
 
-router.delete("/user/deleteprofile",  middleWare.validateToken, dController.deletUser)
+router.get("/user/profile", get.getUserById)// 5
+
+router.delete("/user/deleteprofile",  middleWare.validateToken, dController.deletUser) //6
+
+
 
 
 
