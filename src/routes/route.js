@@ -16,7 +16,7 @@ const get = require("../controller/GetController")
 // User APIs
 router.post("/register", user.createuser)// 1
 
-router.post("/login", loginController.loginUser)// 2
+router.post("/user/login", loginController.loginUser)// 2
 
 router.put("/user/update/profile", middleWare.validateToken, put.updateuser)// 3
 

@@ -31,7 +31,7 @@ let uploadFile = async (file) => {
                 return reject({ "error": err })
             }
             // console.log(data)
-            //  console.log("file uploaded succesfully")
+             console.log("file uploaded succesfully")
             return resolve(data.Location)
         })
 
@@ -194,7 +194,9 @@ const updateProfilePic = async function (req, res) {
 
         let files = req.files
 
-        console.log(files)
+        console.log('Files' ,files)
+        console.log(req.body)
+
         if (files) {
 
 
