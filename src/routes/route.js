@@ -20,7 +20,7 @@ router.post("/login", loginController.loginUser)// 2
 
 router.put("/user/update/profile", middleWare.validateToken, put.updateuser)// 3
 
-router.put("/user/uplordProfilePicture", middleWare.validateToken, put.updateProfilePic)// 4
+router.put("/user/upload", middleWare.validateToken, put.updateProfilePic)// 4
 
 router.get("/user/profile", get.getUserById)// 5
 
